@@ -1,7 +1,6 @@
 name: Suggest a new site or item 
 description: Do you have a new site or item that is missing from this Awesome List!? 
 labels: add-project
-assignees: ''
 title: '[New Item]: '
 
 body:
@@ -33,7 +32,7 @@ body:
     validations:
       required: false  
   - type: input
-    id: description
+    id: category
     attributes:
       label: Category
       description: Enter an existing Category from the `README.md` or `awesome-list.yaml` files
