@@ -41,3 +41,6 @@
 - name: "further input needed"
   color: cfd3d7
   description: "Not enough detail is provided by the creator"
+- name: "good first issue"
+  color: 98FF98
+  description: "Good for newcomers"
