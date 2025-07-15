@@ -1,6 +1,6 @@
 name: Suggest a new site or item 
 description: Do you have a new site or item that is missing from this Awesome List!? 
-labels: add-project
+labels: add-item
 title: '[New Item]: '
 
 body:
@@ -12,7 +12,7 @@ body:
     attributes:
       label: URL
       description: Enter a valid item URL for the item 
-      placeholder: ex. https://gothub.com/derekvincent/awesome-list-generator
+      placeholder: ex. https://github.com/derekvincent/awesome-list-generator
     validations:
       required: true
   - type: input
