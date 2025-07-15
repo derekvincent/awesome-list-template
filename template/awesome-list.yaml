@@ -1,0 +1,12 @@
+config:
+  list_title: Awesome List!
+  markdown_header_file: "config/header.md"
+  markdown_footer_file: "config/footer.md"
+
+categories:
+
+
+labels:
+
+
+projects:
