@@ -6,11 +6,10 @@ title: '[Questions]: '
 body:
   - type: markdown 
     attributes:
-     value: "|
+     value:|
      Thank you for you questions, suggestions or other issues.
-     If you have issue or suggestion with the markdown generation, or metadata collection please go to the [Awesome-List-Generator](https://github.com/derekvincent/awesome-list-generator/issues) repository and enter an issue. 
-     "
-  - type: input
+     If you have an issue or suggestion with the markdown generation, or metadata collection, please go to the [Awesome-List-Generator](https://github.com/derekvincent/awesome-list-generator/issues) repository and enter an issue. 
+  - type: textarea
     id: description
     attributes:
       label: Description
