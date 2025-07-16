@@ -9,7 +9,7 @@ env:
   PLACEHOLDER_REPO: "derekvincent/awesome-list-template"
 
 jobs:
-  setup-best-of-list:
+  setup-awesome-list:
     runs-on: ubuntu-latest
     steps:
       - name: create-update-branch
@@ -61,7 +61,6 @@ jobs:
             This will create the initial structure for your awesome list.
           commit-message: Initial setup for awesome lists
           labels: setup
-          delete-branch: true
           token: ${{ secrets.GITHUB_TOKEN }}
       #        shell: bash
       #        run: |
