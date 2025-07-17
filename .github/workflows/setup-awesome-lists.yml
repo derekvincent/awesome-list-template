@@ -2,6 +2,7 @@
 name: setup-awesome-list
 
 on:
+  create:
   workflow_dispatch:
 
 env:
@@ -9,6 +10,11 @@ env:
   SETUP_BRANCH: "setup"
   PLACEHOLDER_REPO: "derekvincent/awesome-list-template"
 
+  permissions:
+  # Give the default GITHUB_TOKEN write permission to commit and push the
+  # added or changed files to the repository.
+  contents: write
+  pull-requests: write
 jobs:
   setup-awesome-list:
     runs-on: ubuntu-latest
@@ -49,19 +55,19 @@ jobs:
           sed -i 's:${{ env.PLACEHOLDER_REPO }}:'$GITHUB_REPOSITORY':g' ./config/header.md
           sed -i 's:${{ env.PLACEHOLDER_REPO }}:'$GITHUB_REPOSITORY':g' ./CONTRIBUTING.md
           sed -i 's:'$(echo "${{ env.PLACEHOLDER_REPO }}" | sed "s:.*/::")':'$(echo "$GITHUB_REPOSITORY" | sed "s:.*/::")':g' ./config/header.md
-
-      - name: create-pull-request
-        uses: peter-evans/create-pull-request@v7
+      - name: Commit & Push changes
+        uses: actions-js/push@master
         with:
+          message: Initial setup for awesome lists
           branch: ${{ env.SETUP_BRANCH }}
-          base: ${{ env.DEFAULT_BRANCH }}
-          title: "Initial setup for awesome lists"
-          body: |
-            To finish this setup: Select **Merge pull request** below and **Confirm merge**.
-            This will create the initial structure for your awesome list.
-          commit-message: Initial setup for awesome lists
-          labels: setup
-          token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Merge Branches
+        uses: everlytic/branch-merge@1.1.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_ref: ${{ env.SETUP_BRANCH }}
+          target_branch: ${{ env.DEFAULT_BRANCH }}
+          commit_message_template: "[Automated] Merged the initial structure for your awesome list"
       - name: sync-labels
         uses: EndBug/label-sync@v2
         env:
