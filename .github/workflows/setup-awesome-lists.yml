@@ -1,28 +1,30 @@
 # Based on https://github.com/derekvincent/awesome-list-template/blob/main/.github/workflows/setup-awesome-list.yml
 name: setup-awesome-list
 
-on: [create, workflow_dispatch]
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 env:
   DEFAULT_BRANCH: "main"
   SETUP_BRANCH: "setup"
   PLACEHOLDER_REPO: "derekvincent/awesome-list-template"
 
-  permissions:
+permissions:
   # Give the default GITHUB_TOKEN write permission to commit and push the
   # added or changed files to the repository.
   contents: write
   pull-requests: write
+
 jobs:
   setup-awesome-list:
+    #run-script:
+    name: Check if not a template repository
+    if: >-
+      ${{ !github.event.repository.is_template && github.run_number == 1}}
     runs-on: ubuntu-latest
-
-    permissions:
-      # Give the default GITHUB_TOKEN write permission to commit and push the
-      # added or changed files to the repository.
-      contents: write
-      pull-requests: write
-
     steps:
       - name: create-update-branch
         uses: peterjgrainger/action-create-branch@v3.0.0
@@ -66,11 +68,12 @@ jobs:
           source_ref: ${{ env.SETUP_BRANCH }}
           target_branch: ${{ env.DEFAULT_BRANCH }}
           commit_message_template: "[Automated] Merged the initial structure for your awesome list"
+      - name: Delete Merged Branch
+        uses: imajeetyadav/delete-merged-branches@main
+        with:
+          branch: ${{ env.DEFAULT_BRANCH }}
       - name: sync-labels
         uses: EndBug/label-sync@v2
-      - uses: imajeetyadav/delete-merged-branches@main
-        with:
-          branch: ${{ env.DEFAULT_BRANCH }}        
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
