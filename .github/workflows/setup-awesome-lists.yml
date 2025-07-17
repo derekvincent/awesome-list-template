@@ -1,9 +1,7 @@
 # Based on https://github.com/derekvincent/awesome-list-template/blob/main/.github/workflows/setup-awesome-list.yml
 name: setup-awesome-list
 
-on:
-  create:
-  workflow_dispatch:
+on: [create, workflow_dispatch]
 
 env:
   DEFAULT_BRANCH: "main"
@@ -70,6 +68,9 @@ jobs:
           commit_message_template: "[Automated] Merged the initial structure for your awesome list"
       - name: sync-labels
         uses: EndBug/label-sync@v2
+      - uses: imajeetyadav/delete-merged-branches@main
+        with:
+          branch: ${{ env.DEFAULT_BRANCH }}        
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
