@@ -68,6 +68,13 @@ jobs:
           source_ref: ${{ env.SETUP_BRANCH }}
           target_branch: ${{ env.DEFAULT_BRANCH }}
           commit_message_template: "[Automated] Merged the initial structure for your awesome list"
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ env.DEFAULT_BRANCH }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Delete Merged Branch
         uses: imajeetyadav/delete-merged-branches@main
         with:
