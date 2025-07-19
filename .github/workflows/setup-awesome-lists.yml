@@ -43,7 +43,7 @@ jobs:
         shell: bash
         run: |
           echo $GITHUB_REPOSITORY
-          rm -rf history config latest-changes.md README.md awesome-list.yaml ./.github/workflows/setup-best-of-list.yml CONTRIBUTING.md create-awesome-list.md
+          rm -rf history config latest-changes.md README.md awesome-list.yaml ./.github/workflows/setup-awesome-lists.yml CONTRIBUTING.md create-awesome-list.md
           mkdir -p ./config
           cp ./template/footer.md ./config/footer.md
           cp ./template/header.md ./config/header.md
