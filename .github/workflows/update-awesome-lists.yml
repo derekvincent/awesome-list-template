@@ -2,6 +2,7 @@ name: Awesome Lists Updater
 
 permissions:
   contents: write
+  issues: write
   pull-requests: write
 
 on:
@@ -59,4 +60,4 @@ jobs:
           branch: ${{ env.BRANCH_PREFIX }}${{ env.VERSION  }}
           base: ${{ env.DEFAULT_BRANCH }}
           delete-branch: true
-          labels: "update, auto-generated"
+          labels: "auto-generated"
