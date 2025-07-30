@@ -45,5 +45,5 @@
   color: 98FF98
   description: "Good for newcomers"
 - name: "auto-generated"
-  color: #fbca04
+  color: fbca04
   description: "Automated feature for awesome list updates"

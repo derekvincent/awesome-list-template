@@ -6,8 +6,6 @@ config:
 
 categories:
 
-
 labels:
 
-
-projects:
+items:
