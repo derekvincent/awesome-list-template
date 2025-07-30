@@ -59,3 +59,4 @@ jobs:
           branch: ${{ env.BRANCH_PREFIX }}${{ env.VERSION  }}
           base: ${{ env.DEFAULT_BRANCH }}
           delete-branch: true
+          labels: "update, auto-generated"

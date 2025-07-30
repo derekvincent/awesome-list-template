@@ -44,3 +44,6 @@
 - name: "good first issue"
   color: 98FF98
   description: "Good for newcomers"
+- name: "auto-generated"
+  color: #fbca04
+  description: "Automated feature for awesome list updates"
